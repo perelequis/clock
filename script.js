@@ -13,20 +13,19 @@ function updateTime() {
 setInterval(updateTime, 1000);
 
 clockElement.addEventListener('click', () => {
-    isDark = !isDark;
-    clockElement.className = isDark ? 'clock dark' : 'clock light';
+    isDark =!isDark;
+    clockElement.className = isDark? 'clock dark' : 'clock light';
 });
 
 document.addEventListener('keydown', function(event) {
-  if (event.key === '+') {
-    document.body.requestFullscreen();
-    isFullscreen = true;
-  } else if (event.key === '-') {
-    document.exitFullscreen();
-    isFullscreen = false;
-  } else if (event.key === 'Escape') {
-    document.exitFullscreen();
-    isFullscreen = false;
+  if (event.key === 'Escape') {
+    if (!isFullscreen) {
+      document.body.requestFullscreen();
+      isFullscreen = true;
+    } else {
+      document.exitFullscreen();
+      isFullscreen = false;
+    }
   }
 });
 
