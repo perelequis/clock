@@ -18,11 +18,13 @@ clockElement.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
+  if (event.key === ') {
     if (!isFullscreen) {
       document.body.requestFullscreen();
       isFullscreen = true;
-    } else {
+    }
+  } else if (event.key === 'Escape') {
+    if (isFullscreen) {
       document.exitFullscreen();
       isFullscreen = false;
     }
