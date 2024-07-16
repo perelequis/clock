@@ -14,27 +14,24 @@ setInterval(updateTime, 1000);
 
 clockElement.addEventListener('click', () => {
     isDark =!isDark;
-    clockElement.className = isDark? 'clock dark' : 'clock light';
+    clockElement.classList.toggle('dark', isDark);
+    document.body.classList.toggle('dark', isDark);
 });
 
-document.addEventListener('keydown', function(event) {
-  if (event.key === ') {
-    if (!isFullscreen) {
-      document.body.requestFullscreen();
-      isFullscreen = true;
+document.addEventListener('keydown', (event) => {
+    if (event.key === ')') {
+        if (!isFullscreen) {
+            document.body.requestFullscreen();
+            isFullscreen = true;
+        }
+    } else if (event.key === 'Escape') {
+        if (isFullscreen) {
+            document.exitFullscreen();
+            isFullscreen = false;
+        }
     }
-  } else if (event.key === 'Escape') {
-    if (isFullscreen) {
-      document.exitFullscreen();
-      isFullscreen = false;
-    }
-  }
 });
 
-document.addEventListener('fullscreenchange', function(event) {
-  if (document.fullscreenElement) {
-    isFullscreen = true;
-  } else {
-    isFullscreen = false;
-  }
+document.addEventListener('fullscreenchange', () => {
+    isFullscreen = document.fullscreenElement!== null;
 });
