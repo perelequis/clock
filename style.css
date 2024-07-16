@@ -23,22 +23,22 @@ body {
     align-items: center;
 }
 
-.clock.light {
-    background-color: #fff;
-    color: #000000;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
 .clock.dark {
     background-color: #000000;
     color: #fff;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
-body.light {
-    background-color: #fff; /* mudado para branco */
+.clock.light {
+    background-color: #fff;
+    color: #000000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 body.dark {
-    background-color: #000; /* mudado para preto */
+    background-color: #000;
+}
+
+body.light {
+    background-color: #fff;
 }
