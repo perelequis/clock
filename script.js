@@ -1,3 +1,6 @@
+clockElement.classList.add('light'); // added
+document.body.classList.add('light'); // added
+
 const clockElement = document.querySelector('#clock');
 const timeElement = document.querySelector('#time');
 
