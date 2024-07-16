@@ -1,6 +1,3 @@
-clockElement.classList.add('light'); // added
-document.body.classList.add('light'); // added
-
 const clockElement = document.querySelector('#clock');
 const timeElement = document.querySelector('#time');
 
@@ -15,8 +12,11 @@ function updateTime() {
 
 setInterval(updateTime, 1000);
 
+clockElement.classList.add('light');
+document.body.classList.add('light');
+
 clockElement.addEventListener('click', () => {
-    isDark =!isDark;
+    isDark = !isDark;
     clockElement.classList.toggle('dark', isDark);
     document.body.classList.toggle('dark', isDark);
 });
@@ -36,5 +36,5 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.addEventListener('fullscreenchange', () => {
-    isFullscreen = document.fullscreenElement!== null;
+    isFullscreen = document.fullscreenElement !== null;
 });
