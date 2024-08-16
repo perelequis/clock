@@ -24,28 +24,20 @@ body {
     font-size: 96px;
     font-weight: bold;
     text-align: center;
+    background-color: #000; /* Fundo preto */
+    color: #fff; /* Números brancos */
     transition: background-color 0.5s, color 0.5s;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.clock.dark {
-    background-color: #000000;
-    color: #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
-.clock.light {
-    background-color: #fff;
-    color: #000000;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-body.dark {
+body.dark .clock {
     background-color: #000;
+    color: #fff;
 }
 
-body.light {
-    background-color: #fff;
+body.light .clock {
+    background-color: #000; /* Manter fundo preto */
+    color: #fff; /* Manter números brancos */
 }
