@@ -1,23 +1,83 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relógio Simples</title>
-    <link rel="icon" href="Relógio.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <title>Relógio</title>
+    <link rel="icon" href="Relógio.ico" type="image/x-icon"> <!-- Ícone da página -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        #clock {
+            font-size: 6vw;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            animation: pulse 1.5s infinite alternate;
+            user-select: none;
+        }
+
+        @keyframes pulse {
+            from {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+            }
+            to {
+                text-shadow: 0 0 25px rgba(255, 255, 255, 1);
+            }
+        }
+
+        @media (max-width: 600px) {
+            #clock {
+                font-size: 10vw;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="clock-container">
-        <div class="clock" id="clock">
-            <p id="time"></p>
-        </div>
-    </div>
-    <script src="script.js" defer></script>
-    <div class="container">
-        <footer>
-            <p>&copy; 2024 Perelequis - Relógio Simples</p>
-        </footer>
-    </div>
+    <div id="clock">12:00</div>
+
+    <script>
+        let mostrarSegundos = false;
+
+        function atualizarRelogio() {
+            const agora = new Date();
+            let horas = agora.getHours();
+            const minutos = agora.getMinutes();
+            const segundos = agora.getSeconds();
+
+            horas = horas % 12 || 12;
+            const horasFormatadas = horas.toString().padStart(2, '0');
+            const minutosFormatados = minutos.toString().padStart(2, '0');
+            const segundosFormatados = segundos.toString().padStart(2, '0');
+
+            const formatoHora = mostrarSegundos
+                ? `${horasFormatadas}:${minutosFormatados}:${segundosFormatados}`
+                : `${horasFormatadas}:${minutosFormatados}`;
+
+            document.getElementById("clock").innerText = formatoHora;
+        }
+
+        document.body.addEventListener("click", () => {
+            mostrarSegundos = !mostrarSegundos;
+            atualizarRelogio();
+        });
+
+        setInterval(atualizarRelogio, 1000);
+        atualizarRelogio();
+    </script>
 </body>
 </html>
